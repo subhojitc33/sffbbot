@@ -47,10 +47,32 @@ if(process=='Account'){
    }
 	});
 };
+ var findContactsByAccount = function(msg)
+{
+	return new Promise(function(resolve, reject){
+
+	var accountId=msg;
+	console.log(accountId+'>>>'+msg);
+	connection.query({query: "SELECT Id, Name, Title, Account.Name, Phone, MobilePhone, Email, Picture_URL__c FROM Contact WHERE Account.Id = '" + accountId + "' LIMIT 5"}, function(err, res) 
+			{
+	    if(err)
+	    { console.error(err);
+	    	reject("AnError Occured");}
+	    	    else { 
+	    	    	var accountvar = res;
+	    	    	console.log("QUERY RESULT");
+	    	    	console.log(accountvar);
+	   resolve(res.records);
+	   }
+	   });
+   
+	});
+};
 
 
 
 exports.IntialIntract = IntialIntract;
+exports.findContactsByAccount=findContactsByAccount;
 exports.connection = connection;
 exports.AccessToken = AccessToken;
 
