@@ -79,7 +79,7 @@ exports.webhookPost = function(req,res)
 	}	
 	  else if (event.postback) {
             var payload = event.postback.payload.split(",");
-            var (payload[0] === "view_contacts") {
+            if (payload[0] === "view_contacts") {
                 botResponse({text: "OK, looking for your contacts at " + payload[2] + "..."}, sender);
                 ST.findContactsByAccount(payload[1]).then(function(result){
 			
