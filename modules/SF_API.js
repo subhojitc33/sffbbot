@@ -26,10 +26,12 @@ connection.authenticate({ username: SFusername, password: SFpassword }, function
      }
 });
 
- var IntialIntract = function(text,process)
+ var IntialIntract = function(msg,process)
 {
 	return new Promise(function(resolve, reject){
 if(process=='Account'){	
+	var name=msg.text;
+	console.log(name+'>>>'+text);
 	connection.query({query: "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5"}, function(err, res) 
 			{
 	    if(err)
