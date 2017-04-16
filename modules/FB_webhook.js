@@ -28,14 +28,18 @@ function botResponse(message, recipient)
 
 function sInterpret(text, sender){
 	//var salutation = text.match(/Hello/i); 
-	//if(text.match(/Hello/i) || text.match(/hello/i) || text.match(/Hi/i) || text.match(/hi/i)){
-	SF.IntialIntract().then(function(results)
+	if(text.match(/search account (.*)/i) ){
+	SF.IntialIntract(text,'account').then(function(results)
 		{
 		console.log("BEFORE ST CALL");	
 		var cMessage = ST.formatContact(results); 
 		botResponse({text:cMessage},sender);
 		});
-	//}
+	}
+	else{
+		var resText='I do not understand what are you asking for ';
+	 botResponse({text:resText}, sender);	
+	}
 }
 
 exports.webhookGet = function(req,res)
@@ -59,13 +63,13 @@ exports.webhookPost = function(req,res)
 		var event = messaging_events[i];
 		var sender = event.sender.id;
 		if(event.message.text=='help'){
-				  sInterpret({text:
-			    `You can ask me things like:
-		    Search account Acme
-		    Search Acme in accounts
-		    Search contact Smith
-		    What are my top 3 opportunities?
-			`}, sender);
+	        var restext='You can ask me things like: ';
+	          restext+='Search account Acme';
+		    restext+='Search Acme in accounts';
+		    restext+='Search contact Smith';
+		    restext+='What are my top 3 opportunities?';		
+			botResponse({text:restext}, sender);
+				
 			return;
 		   }
 	else if(event.message && event.message.text){
