@@ -29,10 +29,10 @@ function botResponse(message, recipient)
 function sInterpret(text, sender){
 	//var salutation = text.match(/Hello/i); 
 	if(text.match(/search account (.*)/i) ){
-	SF.IntialIntract(text,'account').then(function(results)
+	SF.IntialIntract(text,'Account').then(function(results)
 		{
 		console.log("BEFORE ST CALL");	
-		var cMessage = ST.formatContact(results); 
+		var cMessage = ST.formatAccount(results); 
 		botResponse({text:cMessage},sender);
 		});
 	}
