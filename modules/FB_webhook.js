@@ -74,7 +74,7 @@ exports.webhookPost = function(req,res)
 			botResponse({text:restext}, sender);
 		    }else{	
 			//botResponse({text:'Hello I am AWESOME BOT to help you'}, sender);
-			sInterpret({text:event.message.text}, sender);
+			sInterpret(event.message.text, sender);
 		}
 	}
 	res.sendStatus(200);
