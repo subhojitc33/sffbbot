@@ -29,6 +29,7 @@ function botResponse(message, recipient)
 function sInterpret(text, sender){
 	//var salutation = text.match(/Hello/i); 
 	if(text.match(/search account (.*)/i) ){
+		text=text.match(/search account (.*)/i)[1];
 	SF.IntialIntract(text,'Account').then(function(results)
 		{
 		console.log("BEFORE ST CALL");	
@@ -81,7 +82,7 @@ exports.webhookPost = function(req,res)
             var payload = event.postback.payload.split(",");
             if (payload[0] === "view_contacts") {
                 botResponse({text: "OK, looking for your contacts at " + payload[2] + "..."}, sender);
-                ST.findContactsByAccount(payload[1]).then(function(result){
+                SF.findContactsByAccount(payload[1]).then(function(result){
 			
 			var cMessage = ST.formatContact(results); 
 		        botResponse(cMessage,sender);
