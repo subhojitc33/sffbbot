@@ -1,18 +1,22 @@
 "use strict";
 var bodyParser = require('body-parser');
-var formatContact = function(contacts)
+var formatAccount = function(accounts)
 {
-	/*var elements = [];
-	console.log(contacts.get("Title"));
-	contacts.forEach(function(contact){
+	var elements = [];
+	console.log(accounts.get("Title"));
+	accounts.forEach(function(account){
 		elements.push({
-			title: contact.get("Name"),
-            subtitle: contact.get("ContactId__r").Name + " · " + contact.get("ContactId__r").MobilePhone,
-            "buttons":[{
-            	"type":"postback",
-            	"title":"View Opportunity",
-            	"payload": "View_Opportunity," + contact.getId() + "," + contact.get("Name")
-            	
+			title: account.get("Name"),
+            subtitle: account.get("BillingStreet") + ", " + account.get("BillingCity") + " " + account.get("BillingState") + " · " + account.get("Phone"),
+            "image_url": account.get("Picture_URL__c"),
+            "buttons": [{
+                "type":"postback",
+                "title":"View Contacts",
+                "payload": "view_contacts," + account.getId() + "," + account.get("Name")
+            },{
+                "type": "web_url",
+                "url": "https://login.salesforce.com/" + account.getId(),
+                "title": "Open in Salesforce"
             }]
 		});
 	});
@@ -24,10 +28,10 @@ var formatContact = function(contacts)
 				"elements": elements
 			}
 		}
-	};*/
+	};
 	
 	///OLD GOLD START HERE
-	console.log("REACHED ST");
+	/*console.log("REACHED ST");
 	var responsetext = "Hello";
 	console.log(contacts[0]);
 	var sName = contacts[0].get("ContactId__r").Name;
@@ -41,6 +45,6 @@ var formatContact = function(contacts)
 	responsetext = "Hello Tom, \r\n  Price Concession waiting for you: \r\n 1. PC: 80131077 : Best Buy | PC Margin:68.50";
 	console.log(responsetext);
 
-	return responsetext;
+	return responsetext;*/
 };
 exports.formatContact = formatContact; 
