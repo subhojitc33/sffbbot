@@ -24,7 +24,7 @@ var formatAccount = function(accounts)
 		"attachment": {
 			"type": "template",
 			"payload": {
-				"template_type": "genric",
+				"template_type": "generic",
 				"elements": elements
 			}
 		}
