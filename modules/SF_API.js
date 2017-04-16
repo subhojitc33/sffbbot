@@ -26,21 +26,23 @@ connection.authenticate({ username: SFusername, password: SFpassword }, function
      }
 });
 
- var IntialIntract = function(Id)
+ var IntialIntract = function(text,process)
 {
 	return new Promise(function(resolve, reject){
-	connection.query({query: "SELECT Name, Amount, ContactId__r.Name, ContactId__r.MobilePhone FROM Opportunity where ContactId__r.Id ='0031a000007h6H9AAI'" }, function(err, res) 
+if(process=='Account'){	
+	connection.query({query: "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5"}, function(err, res) 
 			{
 	    if(err)
 	    { console.error(err);
 	    	reject("AnError Occured");}
 	    	    else { 
-	    	    	var contact = res;
+	    	    	var accountvar = res;
 	    	    	console.log("QUERY RESULT");
-	    	    	console.log(contact);
+	    	    	console.log(accountvar);
 	   resolve(res.records);
 	   }
 	   });
+   }
 	});
 };
 
