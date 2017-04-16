@@ -76,6 +76,7 @@ exports.webhookPost = function(req,res)
 			//botResponse({text:'Hello I am AWESOME BOT to help you'}, sender);
 			sInterpret(event.message.text, sender);
 		}
+	}	
 	  else if (event.postback) {
             var payload = event.postback.payload.split(",");
             var (payload[0] === "view_contacts") {
