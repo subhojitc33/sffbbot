@@ -33,7 +33,7 @@ function sInterpret(text, sender){
 		{
 		console.log("BEFORE ST CALL");	
 		var cMessage = ST.formatAccount(results); 
-		botResponse({text:cMessage},sender);
+		botResponse(cMessage,sender);
 		});
 	}
 	else{
