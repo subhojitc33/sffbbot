@@ -62,18 +62,17 @@ exports.webhookPost = function(req,res)
 	for(var i = 0; i < messaging_events.length; i++){
 		var event = messaging_events[i];
 		var sender = event.sender.id;
-		if(event.message.text=='help'){
-	        var restext='You can ask me things like: ';
-	          restext+='Search account Acme';
-		    restext+='Search Acme in accounts';
-		    restext+='Search contact Smith';
-		    restext+='What are my top 3 opportunities?';		
-			botResponse({text:restext}, sender);
-				
-			return;
-		   }
-	else if(event.message && event.message.text){
+		
+	       if(event.message && event.message.text){
 			console.log("FACEBOOK ID IS:" +sender);
+		    if(event.message.text=='Help'){
+		      var restext='You can ask me things like: \n';
+	          restext+='Search account Acme\n';
+		    restext+='Search Acme in accounts\n';
+		    restext+='Search contact Smith\n';
+		    restext+='What are my top 3 opportunities?\n';		
+			botResponse({text:restext}, sender);
+		    }else{	
 			//botResponse({text:'Hello I am AWESOME BOT to help you'}, sender);
 			sInterpret({text:event.message.text}, sender);
 		}
