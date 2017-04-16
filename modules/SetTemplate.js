@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var formatAccount = function(accounts)
 {
 	var elements = [];
-	console.log(accounts.get("Title"));
+	//console.log(accounts.get("Title"));
 	accounts.forEach(function(account){
 		elements.push({
 			title: account.get("Name"),
@@ -47,4 +47,4 @@ var formatAccount = function(accounts)
 
 	return responsetext;*/
 };
-exports.formatContact = formatContact; 
+exports.formatAccount = formatAccount; 
