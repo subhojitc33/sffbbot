@@ -2,10 +2,10 @@
 var bodyParser = require('body-parser');
 var nForceAuth = require('nforce'),
 Promise = require('promise'),
-SFclientId ='3MVG9sG9Z3Q1Rlbf.rH3WjK5kIQQ37M7ioDSWxIR7C9epVVEd6HIRyKKfLobJ_DFfX9MLmS3jvW9DUZKPTm4S',
-SFSecret ='3567212960861136536',
-SFusername ='jairaj@gmail.com',
-SFpassword ='Shinsei1'
+SFclientId ='3MVG9ZL0ppGP5UrAjkXOacFI9lpAVXQgGCeRrfV51tqe0ju_Nwfve9jIMkXwfcbXE7fdyILVI0PpmCIieJhGR',
+SFSecret ='5761097291874345860',
+SFusername ='subhojit_dev3@gmail.com',
+SFpassword ='November@2013XD1K3tYl2sQ318v5FhDu6huso'
 ;
 
 var AccessToken = '';
